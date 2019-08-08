@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.it.ssm.mapper.CommMapperCustom">
+
+    <!--定义商品查询的sql片段,就是商品查询条件 商品查询条件通过listqueryvo包装对象commcustom属性传递  使用动态sql，通过if判断，满足sql拼接-->
+    <sql id="query_comm_where">
+
+        <if test="CommCustom!=null">
+            <if test="CommCustom.comm_name!=null and CommCustom.comm_name!=''">
+                comm_name LIKE '%${CommCustom.comm_name}%'
+            </if>
+        </if>
+    </sql>
+
+    <!--商品列表查询-->
+    <!--paramtertype传入包装对象(包装查询条件),resulttype建议使用拓展对象-->
+    <select id="findComm" parameterType="cn.it.ssm.po.ListQueryVo" resultType="cn.it.ssm.po.CommCustom">
+        SELECT * FROM commlist
+        <where>
+            <include refid="query_comm_where"/>
+        </where>
+    </select>
+
+
+</mapper>

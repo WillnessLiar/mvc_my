@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!-- 引入属性文件 -->
+    <!--<properties resource="db.properties"></properties>-->
+    <!-- 日志 -->
+    <!--<settings>-->
+        <!--<setting name="logImpl" value="LOG4J"/>-->
+    <!--</settings>-->
+
+    <!--定义别名-->
+    <typeAliases>
+        <!--单个定义别名-->
+        <!--<typeAlias type="cn.itcast.mybatis.po.User" alias="user"></typeAlias>-->
+        <!--批量别名定义：指定包名，mybatis自动扫描保重的po类，自动定义别名，别名即是类名-->
+        <package name="cn.it.ssm.po"/>
+    </typeAliases>
+
+    <!-- 运行环境 -->
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="JDBC">-->
+                <!--<property name="..." value="..."/>-->
+            <!--</transactionManager>-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="${jdbc.driver}"/>-->
+                <!--<property name="url" value="${jdbc.url}"/>-->
+                <!--<property name="username" value="${jdbc.username}"/>-->
+                <!--<property name="password" value="${jdbc.password}"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <!--由于用spring和mybatis整合包进行mapper扫描，无需再配-->
+    <!--必须遵循mapper.xml和mapper.java文件同名且在同一目录-->
+    <!--<mappers>-->
+        <!--用resource方法加载一次一个映射文件-->
+        <!--<mapper resource="sqlmap/User.xml" />-->
+        <!--<mapper resource="mapper/UserMapper/xml"/>-->
+        <!--通过mapper接口加载映射文件，规范：将mapper接口类名和mapper.xml映射文件名称保持一致，且在一个目录中，-->
+        <!--<mapper class="cn.itcast.mybatis.mapper.UserMapper"/>-->
+        <!--批量加载mapper-->
+        <!--<package name="cn.itcast.mybatis.mapper"/>-->
+    <!--</mappers>-->
+</configuration>
